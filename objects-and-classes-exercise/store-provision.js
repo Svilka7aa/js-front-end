@@ -4,13 +4,17 @@ function solve(currentStock, deliverdStock) {
     const stock = products.reduce((acc, curr, i) => {
         if (i % 2 ===0) {
             if (!acc.hasOwnProperty(curr)) {
-                acc[curr] = products[i];
+                acc[curr] = Number(products[i + 1]);
+            } else {
+                acc[curr] += Number(products[i + 1])
             }
         }
         return acc;
     }, {})
 
-    console.log(stock)
+    Object.keys(stock).forEach(key => {
+        console.log(`${key} -> ${stock[key]}`)
+    })
 }
 
 solve(
